@@ -1,0 +1,12 @@
+{
+  "name": "are-you-gambling",
+  "version": "0.1.0",
+  "description": "Tests whether your reason for buying a stock or coin is investing or gambling. Your neighbour uncle, who loves a flutter, cheers you on if your reason sounds like his.",
+  "author": {
+    "name": "chayapol.par"
+  },
+  "homepage": "https://github.com/chayapol-p/are-you-gambling",
+  "repository": "https://github.com/chayapol-p/are-you-gambling",
+  "license": "MIT",
+  "keywords": ["investing", "trading", "decision-making", "cognitive-bias", "skill"]
+}

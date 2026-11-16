@@ -1,0 +1,5 @@
+.DS_Store
+__pycache__/
+*.pyc
+# Working notes for the next session; kept out of the public history
+HANDOFF.md
