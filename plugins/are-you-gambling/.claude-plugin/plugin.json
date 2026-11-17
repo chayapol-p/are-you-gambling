@@ -1,5 +1,6 @@
 {
   "name": "are-you-gambling",
+  "displayName": "Are You Gambling?",
   "version": "0.1.1",
   "description": "Tests whether your reason for buying a stock or coin is investing or gambling. Your neighbour uncle, who loves a flutter, cheers you on if your reason sounds like his.",
   "author": {
@@ -18,5 +19,6 @@
   "icon": ".claude-plugin/icon.png",
   "documentationUrl": "https://github.com/chayapol-p/are-you-gambling#readme",
   "supportUrl": "https://github.com/chayapol-p/are-you-gambling/issues",
-  "privacyPolicyUrl": "https://github.com/chayapol-p/are-you-gambling#privacy"
+  "privacyPolicyUrl": "https://github.com/chayapol-p/are-you-gambling#privacy",
+  "termsOfServiceUrl": "https://github.com/chayapol-p/are-you-gambling/blob/main/LICENSE"
 }
