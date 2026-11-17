@@ -23,12 +23,12 @@ CANVAS_WIDTH = 960                     # every picture shares this width; it exp
 
 ## Colours by role, light and dark. Drawing functions use these names, never colour codes.
 LIGHT_PALETTE = {
-    "ground": "#f6f5f1", "board": "#ffffff",
+    "ground": "#ffffff", "board": "#ffffff",            # white, so the picture sits flush on GitHub's light page
     "ink": "#1b1f24", "soft": "#5f6670", "faint": "#c9ccd1",
     "accent": "#c62828", "on_accent": "#ffffff",
 }
 DARK_PALETTE = {
-    "ground": "#0d1117", "board": "#161b22",
+    "ground": "#0d1117", "board": "#161b22",            # GitHub's dark page colour, for the same reason
     "ink": "#e6edf3", "soft": "#9aa4ae", "faint": "#3a424c",
     "accent": "#ff5a52", "on_accent": "#0d1117",
 }
@@ -165,6 +165,97 @@ def mirror_svg(colors, slug):
     return wrap_svg(slug, MIRROR_HEIGHT, "Your reason beside the uncle's", description, "".join(parts))
 
 
+# ---- Picture: the banner ----
+
+BANNER_HEIGHT = 200
+
+
+# Draw the banner: the project name, then five red spins and the black the gambler expects next.
+def banner_svg(colors, slug):
+    parts = [f'<rect width="{CANVAS_WIDTH}" height="{BANNER_HEIGHT}" fill="{colors["ground"]}"/>',
+             quote_text(colors, CANVAS_WIDTH // 2, 100, "Are you gambling?", size=60, bold=True)]
+
+    # Six chips centred under the name: five past reds, then the dashed black everyone thinks is due
+    chip_radius, chip_gap = 17, 46
+    first_chip_x = CANVAS_WIDTH // 2 - chip_gap * 5 // 2
+    for i in range(5):
+        parts.append(spin_chip(colors, first_chip_x + i * chip_gap, 152, chip_radius, "R"))
+    parts.append(expected_chip(colors, first_chip_x + 5 * chip_gap, 152, chip_radius, "B"))
+    return wrap_svg(slug, BANNER_HEIGHT, "Are You Gambling?",
+                    "The title Are you gambling? above five red roulette spins and a dashed black chip.", "".join(parts))
+
+
+# ---- Picture: how it works ----
+
+FLOW_HEIGHT = 320
+FLOW_BOARD_TOP, FLOW_BOARD_WIDTH, FLOW_BOARD_HEIGHT, FLOW_GAP = 70, 194, 226, 40
+
+
+# Draw a right-pointing arrow in the gap between two boards.
+def gap_arrow(colors, start_x, end_x, y):
+    return (f'<line x1="{start_x}" y1="{y}" x2="{end_x - 8}" y2="{y}" stroke="{colors["soft"]}" stroke-width="2"/>'
+            f'<path d="M {end_x - 10},{y - 6} L {end_x},{y} L {end_x - 10},{y + 6} Z" fill="{colors["soft"]}"/>')
+
+
+# Write centred lines inside one board, each line given as (words, colour role, bold).
+def board_lines(colors, center_x, first_y, lines, size=15, line_height=24):
+    parts = []
+    for i, (words, color_role, bold) in enumerate(lines):
+        parts.append(quote_text(colors, center_x, first_y + i * line_height, words, size=size,
+                                color_role=color_role, bold=bold))
+    return "".join(parts)
+
+
+# Draw one verdict row in the last board: a small marker, then the verdict name.
+def verdict_row(colors, left_x, y, marker, name):
+    markers = {
+        "trap": f'<circle cx="{left_x}" cy="{y - 5}" r="7" fill="{colors["accent"]}"/>',
+        "lucky": (f'<circle cx="{left_x}" cy="{y - 5}" r="7" fill="{colors["accent"]}"/>'
+                  f'<circle cx="{left_x}" cy="{y - 5}" r="10.5" fill="none" stroke="{colors["accent"]}" stroke-width="1.5"/>'),
+        "half": (f'<circle cx="{left_x}" cy="{y - 5}" r="7" fill="none" stroke="{colors["ink"]}" stroke-width="2"/>'
+                 f'<path d="M {left_x},{y - 12} A 7 7 0 0 1 {left_x},{y + 2} Z" fill="{colors["ink"]}"/>'),
+        "proper": f'<circle cx="{left_x}" cy="{y - 5}" r="7" fill="{colors["ink"]}"/>',
+    }
+    return markers[marker] + quote_text(colors, left_x + 20, y, name, size=15, anchor="start")
+
+
+# Draw the flow: your reasons, the uncle's cheer, the break out of character, then the verdict.
+def how_it_works_svg(colors, slug):
+    parts = [f'<rect width="{CANVAS_WIDTH}" height="{FLOW_HEIGHT}" fill="{colors["ground"]}"/>',
+             repeating_mark(colors)]
+    board_lefts = [40 + i * (FLOW_BOARD_WIDTH + FLOW_GAP) for i in range(4)]
+    labels = ["1 · YOU", "2 · THE UNCLE", "3 · STEPS OUT", "4 · VERDICT"]
+    middle_y = FLOW_BOARD_TOP + FLOW_BOARD_HEIGHT // 2
+
+    # Arrows first, then the boards on top of them
+    for board_left in board_lefts[:-1]:
+        parts.append(gap_arrow(colors, board_left + FLOW_BOARD_WIDTH + 4, board_left + FLOW_BOARD_WIDTH + FLOW_GAP - 4, middle_y))
+    for board_left, label in zip(board_lefts, labels):
+        parts.append(scoreboard(colors, board_left, FLOW_BOARD_TOP, FLOW_BOARD_WIDTH, FLOW_BOARD_HEIGHT, label))
+
+    # What happens on each board
+    centers = [board_left + FLOW_BOARD_WIDTH // 2 for board_left in board_lefts]
+    parts.append(board_lines(colors, centers[0], 150, [
+        ("Tell him what", "ink", False), ("you bought and", "ink", False), ("every reason why,", "ink", False),
+        ("all in one go.", "ink", False)]))
+    parts.append(board_lines(colors, centers[1], 136, [
+        ("A trap gets cheered:", "soft", False), ("“Black is due!”", "accent", True), ("", "ink", False),
+        ("A real one beats him:", "soft", False), ("“That one beats me.”", "ink", True)]))
+    parts.append(board_lines(colors, centers[2], 136, [
+        ("Your reason", "ink", False), ("beside his,", "ink", False), ("a fact you missed,", "ink", False),
+        ("then: “What do you", "ink", True), ("know that I don't?”", "ink", True)]))
+    verdict_left = board_lefts[3] + 30
+    parts.append(verdict_row(colors, verdict_left, 140, "trap", "Uncle's table"))
+    parts.append(verdict_row(colors, verdict_left, 184, "lucky", "Lucky punter"))
+    parts.append(verdict_row(colors, verdict_left, 228, "half", "Half homework"))
+    parts.append(verdict_row(colors, verdict_left, 272, "proper", "Proper investor"))
+
+    description = ("Four boards joined by arrows. One: you give every reason at once. Two: the uncle cheers traps "
+                   "and admits when a real reason beats him. Three: he steps out of character, puts your reason "
+                   "beside his and adds a fact you missed. Four: one of four verdicts, from Uncle's table to Proper investor.")
+    return wrap_svg(slug, FLOW_HEIGHT, "How it works", description, "".join(parts))
+
+
 # ---- Page wrapper ----
 
 # Wrap drawn parts in an accessible <svg> with a title and a description.
@@ -200,7 +291,9 @@ def picture_page(colors, heading, svg):
 # ---- Write every picture, light and dark ----
 
 PICTURES = [  # file name, page heading, drawing function
+    ("banner", "Are You Gambling?", banner_svg),
     ("mirror", "Your reason beside the uncle's", mirror_svg),
+    ("how-it-works", "How it works", how_it_works_svg),
 ]
 
 

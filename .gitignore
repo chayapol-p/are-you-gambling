@@ -7,3 +7,5 @@ HANDOFF.md
 test-runs/
 # Picture pages are build output; the PNGs in docs/images are what the README uses
 docs/diagram/*.html
+# Release files; they go on GitHub releases, not in git
+dist/
