@@ -8,7 +8,7 @@
       "name": "are-you-gambling",
       "source": "./",
       "description": "Tests whether your reason for buying a stock or coin is investing or gambling, by playing a gambling-addicted neighbour uncle.",
-      "version": "0.1.0",
+      "version": "0.1.1",
       "author": {
         "name": "chayapol.par"
       },
