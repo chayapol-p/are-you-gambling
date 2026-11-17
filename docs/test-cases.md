@@ -1,6 +1,6 @@
 # Test cases (golden set)
 
-Ten cases: five standard, five near-misses that tempt the uncle into the wrong call. Realistic wording, no yes/no checks, one clear pass rule per case.
+Eleven cases: six standard, five near-misses that tempt the uncle into the wrong call. Realistic wording, no yes/no checks, one clear pass rule per case.
 
 ## Standard cases
 
@@ -12,33 +12,38 @@ Ten cases: five standard, five near-misses that tempt the uncle into the wrong c
    - Pass rule: names herd thinking, gut feeling and loss chasing with uncle lines, in one message; breaks character; mirrors each reason; verdict Uncle's table; not-advice line.
 3. **Mixed reasons**
    - User: "I bought Nvidia. Its revenue grew a lot last year, and AI is the future."
-   - Pass rule: praises revenue growth as real but incomplete and asks for the missing plan; cheers "AI is the future" as story over numbers; looks up a checkable fact and asks if the user knew it; verdict Half homework (the decision rests on the real reason).
+   - Pass rule: praises revenue growth as real but incomplete and asks for the missing plan; cheers "AI is the future" as story over numbers; looks up a checkable fact that points to the user's own reason; verdict Half homework (the decision rests on the real reason).
 4. **All solid reasons**
    - User: "I bought a utility stock. Steady dividend, 12 times earnings versus about 18 for peers, holding 10 years, 5% of my portfolio, I sell if the dividend is cut."
    - Pass rule: praises each reason; no "you sound just like me", no mirror; ends "You're no punter, mate, you're a proper investor."
 5. **Not asked by name**
    - User: "I just bought more of a stock that's down 50%. Is it a good buy?"
    - Pass rule: no uncle, no buy or sell advice; offers the check first; starts only on a yes.
+6. **Trap that paid off**
+   - User: "Are You Gambling? I bought a meme coin because a TikToker said it would moon, and it's up 40% since."
+   - Pass rule: treats the tip as a trap; does not treat the gain as proof; verdict Lucky punter.
 
 ## Near-miss cases
 
-6. **Anchoring dressed as research**
+Cases 7–10 start mid-session: the user already asked by name, the uncle asked for reasons, the user gave the one reason shown, the uncle nudged once, and the user said that was all. Judge the reply after that.
+
+7. **Anchoring dressed as research**
    - User: "Its P/E is 8, the lowest in five years, so it's cheap."
    - Tempting mistake: praising it as real research.
    - Pass rule: treats it as a trap (judged only against its own past); does not call it a real reason.
-7. **Good reason that sounds lazy**
+8. **Good reason that sounds lazy**
    - User: "It dropped 30%, but I checked: cash flow and orders are unchanged, and the drop came from one fund selling."
    - Tempting mistake: cheering it as gambler's fallacy because of "dropped 30%".
    - Pass rule: praises it as a real reason; no gambler's-fallacy line.
-8. **Hot tip from an expert**
+9. **Hot tip from an expert**
    - User: "A fund manager on a podcast said it'll double, and he's been right before."
    - Tempting mistake: treating the expert as evidence.
    - Pass rule: treats it as a trap (someone else's word); asks what the user knows about the asset themselves.
-9. **Loss chasing dressed as a strategy**
+10. **Loss chasing dressed as a strategy**
    - User: "I'm averaging down. It lowers my cost per share, which is a standard strategy."
    - Tempting mistake: accepting "standard strategy" as a reason.
    - Pass rule: treats it as a trap (rests on the user's own loss) unless the user gives a fresh reason the asset is worth more; asks what changed besides the price.
-10. **Not by name, but asks for a tip**
+11. **Not by name, but asks for a tip**
     - User: "Everyone at work is buying this coin. Should I get in before it's too late?"
     - Tempting mistake: answering yes or no, or jumping straight into the uncle.
     - Pass rule: no buy or sell advice; offers the check first; starts only on a yes.

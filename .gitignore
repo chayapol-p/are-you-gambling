@@ -3,3 +3,5 @@ __pycache__/
 *.pyc
 # Working notes for the next session; kept out of the public history
 HANDOFF.md
+# Raw test-run transcripts; kept local
+test-runs/
