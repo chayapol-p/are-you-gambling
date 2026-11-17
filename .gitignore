@@ -5,3 +5,5 @@ __pycache__/
 HANDOFF.md
 # Raw test-run transcripts; kept local
 test-runs/
+# Picture pages are build output; the PNGs in docs/images are what the README uses
+docs/diagram/*.html
