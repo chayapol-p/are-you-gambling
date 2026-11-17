@@ -40,7 +40,7 @@ A Claude skill that tests your reason for buying a stock or coin. Tell it why yo
   <img src="docs/images/how-it-works.png" width="100%" alt="Diagram that shows four steps: you give every reason, the uncle cheers traps, he steps out of character, then a verdict.">
 </picture>
 
-It judges the thinking behind a reason, not its wording. A finance word doesn't make a reason real, and plain words don't make it weak. Ten common traps are in [`traps.md`](skills/are-you-gambling/references/traps.md), from the gambler's fallacy to loss chasing.
+It judges the thinking behind a reason, not its wording. A finance word doesn't make a reason real, and plain words don't make it weak. Ten common traps are in [`traps.md`](plugins/are-you-gambling/skills/are-you-gambling/references/traps.md), from the gambler's fallacy to loss chasing.
 
 | Verdict | When you get it |
 | --- | --- |

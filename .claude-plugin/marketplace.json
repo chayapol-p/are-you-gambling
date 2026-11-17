@@ -7,7 +7,7 @@
   "plugins": [
     {
       "name": "are-you-gambling",
-      "source": "./",
+      "source": "./plugins/are-you-gambling",
       "description": "Tests whether your reason for buying a stock or coin is investing or gambling, by playing a gambling-addicted neighbour uncle.",
       "version": "0.1.1",
       "author": {
