@@ -30,7 +30,27 @@ It judges the thinking behind a reason, not its wording. Ten common traps are in
 
 ## Install
 
-<!-- to verify: install steps for each place the skill can run -->
+**Claude Code** (as a plugin; `claude plugin update are-you-gambling` gets new versions):
+
+```bash
+claude plugin marketplace add chayapol-p/are-you-gambling
+claude plugin install are-you-gambling@are-you-gambling
+```
+
+Inside a Claude Code session, the same two commands start with `/plugin` instead of `claude plugin`.
+
+**Claude Code** (as a plain skill folder):
+
+```bash
+git clone https://github.com/chayapol-p/are-you-gambling
+mkdir -p ~/.claude/skills
+cp -r are-you-gambling/skills/are-you-gambling ~/.claude/skills/
+```
+
+**Claude app** (web, desktop or mobile, on any plan with code execution turned on):
+
+1. Download `are-you-gambling.zip` from the [latest release](https://github.com/chayapol-p/are-you-gambling/releases/latest).
+2. Open **Customize → Skills**, click **+**, then **Create skill → Upload a skill**, and pick the zip.
 
 ## Try it
 
