@@ -6,11 +6,15 @@ A Claude skill that tests your reason for buying a stock or coin. Tell it why yo
 
 <!-- picture to do: mirror picture, light and dark -->
 
-> Example (replace after the first real run)
+> **You:** Its P/E is 8, the lowest in five years, so it's cheap. … Cheapest it's been in years.
 >
-> **You:** I bought it because it dropped 30%. It's due to bounce.
-> **Uncle:** Same as me, mate! Red's come up five times, so black is due!
-> **Uncle:** Hang on, mate, you sound just like me. What do you know that I don't?
+> **Uncle:** Ooh, "cheapest it's been in years", that's my kind of reason! It used to pay 100 baht, now it's on sale. I love it, mate!
+>
+> **Uncle:** Hang on, mate, you sound just like me.
+>
+> **Verdict: Uncle's table.** Your one reason is the price against its own past, and it would work just as well at my roulette table.
+
+<sub>Trimmed from a real test run. The full reply also looks up a fact about the company's industry and asks what you know that the uncle doesn't.</sub>
 
 ## What it does
 
