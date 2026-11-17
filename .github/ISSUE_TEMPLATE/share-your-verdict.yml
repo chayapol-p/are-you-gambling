@@ -1,0 +1,42 @@
+name: Share your verdict
+description: Tell us what verdict you got and whether it felt fair.
+title: "Verdict: "
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Thanks for trying the uncle. Leave out anything private, such as amounts or account details.
+  - type: textarea
+    id: your-reason
+    attributes:
+      label: Your reason
+      description: The reason you gave, roughly in your own words.
+      placeholder: I bought <asset> because <your reason>.
+    validations:
+      required: true
+  - type: dropdown
+    id: verdict
+    attributes:
+      label: Verdict you got
+      options:
+        - Uncle's table
+        - Lucky punter
+        - Half homework
+        - Proper investor
+    validations:
+      required: true
+  - type: dropdown
+    id: fair
+    attributes:
+      label: Did the verdict feel fair?
+      options:
+        - "Yes"
+        - Mostly
+        - "No"
+    validations:
+      required: true
+  - type: textarea
+    id: anything-else
+    attributes:
+      label: Anything else
+      description: What made you laugh, think, or roll your eyes.

@@ -1,0 +1,31 @@
+name: The uncle got it wrong
+description: The verdict or the uncle's reply missed the point of your reason.
+title: "Wrong call: "
+body:
+  - type: markdown
+    attributes:
+      value: |
+        This helps most when you paste the exchange. Leave out anything private, such as amounts or account details.
+  - type: textarea
+    id: what-you-said
+    attributes:
+      label: What you said
+    validations:
+      required: true
+  - type: textarea
+    id: what-it-said
+    attributes:
+      label: What the uncle and the verdict said
+    validations:
+      required: true
+  - type: textarea
+    id: what-you-expected
+    attributes:
+      label: What you expected, and why
+    validations:
+      required: true
+  - type: input
+    id: where
+    attributes:
+      label: Where you ran it
+      placeholder: Claude app chat, Cowork, Claude Code

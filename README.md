@@ -81,6 +81,14 @@ The uncle introduces himself and cheers every reason you gave. If you gave only 
 
 This is a thinking check. It never tells you to buy or sell.
 
+## Privacy
+
+The plugin is instructions for Claude, nothing else. It runs no code, has no server and sends your words nowhere. To check a fact in your reason, Claude may search the web with its own search tool, the same as in any chat.
+
+## Tell us how it went
+
+Got a verdict, or think the uncle got it wrong? [Open an issue](https://github.com/chayapol-p/are-you-gambling/issues/new/choose); there's a short form for each.
+
 ## Licence
 
 [MIT](LICENSE), by chayapol.par

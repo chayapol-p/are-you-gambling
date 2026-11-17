@@ -8,5 +8,15 @@
   "homepage": "https://github.com/chayapol-p/are-you-gambling",
   "repository": "https://github.com/chayapol-p/are-you-gambling",
   "license": "MIT",
-  "keywords": ["investing", "trading", "decision-making", "cognitive-bias", "skill"]
+  "keywords": [
+    "investing",
+    "trading",
+    "decision-making",
+    "cognitive-bias",
+    "skill"
+  ],
+  "icon": ".claude-plugin/icon.png",
+  "documentationUrl": "https://github.com/chayapol-p/are-you-gambling#readme",
+  "supportUrl": "https://github.com/chayapol-p/are-you-gambling/issues",
+  "privacyPolicyUrl": "https://github.com/chayapol-p/are-you-gambling#privacy"
 }

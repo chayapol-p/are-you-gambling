@@ -1,5 +1,6 @@
 {
   "name": "are-you-gambling",
+  "description": "Are You Gambling? A Claude skill that tests your reason for buying a stock or coin.",
   "owner": {
     "name": "chayapol.par"
   },
